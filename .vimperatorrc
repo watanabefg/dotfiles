@@ -1,0 +1,65 @@
+" -----------------------------------------
+" watanabefg .vimperatorrc
+" created: 2009/09/16 14:11:07
+" $Id$
+"
+" @plugins 
+"  copy.js
+"  direct_bookmarks.js
+"  lookupDictionary.js
+" -----------------------------------------
+
+set guioptions+=B
+set verbose=9
+set showtabline=2
+set history=100
+set complete=l
+set wildoptions=auto
+set defsearch=google
+set suggestengines=google
+set newtab=all
+hi Hint font-family:monospace; font-size:15px; font-weight:bold; color:white; background-color:red; border-color:ButtonShadow; border-width:0px; border-style:solid; padding: 0px 1px;
+
+autocmd LocationChange .* js modes.passAllKeys = false
+autocmd LocationChange www\\.google\\.(co\\.jp|com)/reader js modes.passAllKeys = true 
+autocmd LocationChange mail\\.google\\.com js modes.passAllKeys = true
+autocmd LocationChange www\\.rememberthemilk\\.com  js modes.passAllKeys = true
+
+" ------------------------------------
+" mapping!!
+" ------------------------------------
+noremap ; :
+noremap : ;
+noremap s :<C-u>set<Space>
+noremap ,p :<C-u>dialog<Space>print<Enter>
+noremap j 5j
+noremap k 5k
+
+" PageDown/PageUp
+noremap J <C-d>
+noremap K <C-u>
+noremap <Right> gt
+noremap <Left> gT
+noremap <C-l> gt
+noremap <C-h> gT
+
+" tab area change with Shift + PgUp PgDn
+map <S-Right> :tabmove! +1<CR>
+map <S-Left>  :tabmove! -1<CR>
+
+"map <C-r> :restart<CR>
+
+" Add Mapping <C-c> copy or stop loading
+javascript <<EOF
+mappings.addUserMap([modes.NORMAL,modes.VISUAL],['<C-c>'], 'Copy selected" text or stop loading', function(){ var sel = window.content.window.getSelection().toString(); if (sel){ copyToClipboard(sel,true); } else  { BrowserStop(); echo('Stopped Loading !'); } });
+EOF
+
+" -----------------------------------
+"  plugin
+" -----------------------------------
+let g:direct_sbm_use_services_by_post = 'd'
+let g:direct_sbm_use_services_by_tag = 'd'
+
+let g:hintsio="io"
+let g:hintchars="HJKLASDFGYUIOPQWERTNMZXCVB"
+
