@@ -1,6 +1,6 @@
 " watanabefg's .vimrc
+" $Id$
 set nocompatible " must be first!
-" WEB+DB PRESS option
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
