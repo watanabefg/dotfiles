@@ -7,12 +7,13 @@
 "  copy.js
 "  direct_bookmarks.js
 "  lookupDictionary.js
+"  bitly.js
+"  char-hints-mod2.js
 " -----------------------------------------
-
 set guioptions+=B
 set verbose=9
 set showtabline=2
-set history=100
+set history=50
 set complete=l
 set wildoptions=auto
 set defsearch=google
@@ -47,7 +48,11 @@ noremap <C-h> gT
 map <S-Right> :tabmove! +1<CR>
 map <S-Left>  :tabmove! -1<CR>
 
-"map <C-r> :restart<CR>
+" ブラウザ再起動
+map <C-r> :restart<CR>
+
+" 設定ファイルを再読み込み
+map ,s :so /home/watanabefg/.vimperatorrc<CR>
 
 " Add Mapping <C-c> copy or stop loading
 javascript <<EOF
